@@ -44,8 +44,10 @@ public class TemperatureNormalizer
     */
    public double getAdjustedAverage()
    {
+       int length = data.length -2;
+       double average = (getSum() - getMax() - getMin()) / length;
        // TODO: find the adusted average as described in the javadoc.
-       return 0;
+       return average;
    }
 
    /**
@@ -54,8 +56,13 @@ public class TemperatureNormalizer
     */
     public double getMax()
     {
-        // TODO: find the maximum value
-        return 0;
+        double maxValue = data[0];
+        for (double value : data) {
+            if (value > maxValue){
+                maxValue = value;
+            }
+        }// TODO: find the maximum value
+        return maxValue;
     }
 
    /**
@@ -64,8 +71,13 @@ public class TemperatureNormalizer
     */
     public double getMin()
     {
-        // TODO: find the minimum value
-        return 0;
+        double minValue = data[0];
+        for (double value : data) {
+            if (value < minValue){
+                minValue = value;
+            }
+        }// TODO: find the maximum value
+        return minValue;
     }
 
     /**
@@ -74,11 +86,13 @@ public class TemperatureNormalizer
      */
     public double getSum()
     {
-
-
+        double sum = 0;
+        for (double value : data) {
+            sum = sum + value;
+        }
         // TODO find the sum
 
-        return 0;
+        return sum;
     }
 
 

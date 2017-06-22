@@ -79,7 +79,6 @@ public class ArrayMethods
                 repetitionMap.put(str, 1);
             }
         }
-
         int duplicates = 0;
         for (int repeatCount : repetitionMap.values()) {
             if (repeatCount > 1) {

@@ -1,8 +1,5 @@
 import java.util.Scanner;
-import java.util.Arrays;
-import java.io.File;
 import java.net.URL;
-import java.io.IOException;
 import java.io.InputStream;
 public class WeatherProcessor
 {
