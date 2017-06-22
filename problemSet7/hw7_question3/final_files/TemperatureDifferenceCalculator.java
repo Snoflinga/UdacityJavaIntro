@@ -17,26 +17,50 @@ public class TemperatureDifferenceCalculator
 {
     private double[] data;
 
-    /**
+/**
      * Constructs a TemperatureDifferenceCalculator with the given array
-     * @param the array to process
+     * @param list the array to process
      */
+
     public TemperatureDifferenceCalculator(double[] list)
     {
         data = list;
     }
 
-    /**
+/**
      * Gets the maximum difference between any two consecutive values
      * @return the maximum difference
      */
+public double maxDifference() {
+    double maxDif = Double.MIN_VALUE;
 
-      // TODO: add the stub for the maxDifference method. That is the header, the braces, and the return statement
+    for (int i = 0; i < data.length - 1; i += 2){
+        double day1 = data[i];
+        double day2 = data[i +1];
+        double difference = day1 - day2;
+        if (difference > maxDif){
+            maxDif = difference;
+        }
+    }
+    return maxDif;
+}
 
-    /**
+/**
      * Gets the minimum difference between any two consecutive values
      * @return the minimum difference
      */
+public double minDifference(){
+    double minDif = Double.MAX_VALUE;
 
-    // TODO: add the stub for the minDifference method. That is the header, the braces, and the return statement
+    for (int i = 0; i < data.length; i += 2){
+        double day1 = data[i];
+        double day2 = data[i +1];
+        double difference = day1 - day2;
+        if (difference < minDif){
+            minDif = difference;
+        }
+    }
+    return minDif;
 }
+}
+
