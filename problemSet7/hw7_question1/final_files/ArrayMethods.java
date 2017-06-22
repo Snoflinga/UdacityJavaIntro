@@ -4,6 +4,10 @@
 // For the draft, complete the first method
 //
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class ArrayMethods
 {
     String[] list; //instance variable
@@ -27,8 +31,13 @@ public class ArrayMethods
     {
         boolean sorted = true;
 
-        // TODO: Write the code to loop through the array and determine that each
-        // successive element is larger than the one before it
+        for (int i = 0; i < this.list.length -1; i += 1){
+            String firstWord = list[i];
+            String secondWord = list[i+1];
+            if (firstWord.compareTo(secondWord) > 0 ){
+                sorted = false;
+            }
+        }
 
         return sorted;
     }
@@ -41,7 +50,16 @@ public class ArrayMethods
      */
     public void replaceWithLargerNeighbor()
     {
+        String[]tmpArray = Arrays.copyOf(list, list.length);
+        for (int i = 1; i < list.length -1; i +=1){
+            String firstWord = list[i];
+            String secondWord = list[i+1];
 
+            if (firstWord.compareTo(secondWord) < 0){
+                tmpArray[i] = secondWord;
+            }
+        }
+        this.list = tmpArray;
 
     }
 
@@ -51,34 +69,67 @@ public class ArrayMethods
      * Get the next word. It is at index i. Does it match any of the words with index > i?)
      * @return the number of duplicate words in the list
      */
-    public int countDuplicates()
-    {
-        int duplicates = 0;
-        for (int i = 0; i < list.length - 1; i += 1){
-            for (int y = i + 1; y < list.length -1; y += 1){
-                int firstPos = 0;
-                int secondPos = 1;
-                String firstWord = list[firstPos];
-                String secondWord = list[secondPos];
-                if (firstWord.compareTo(secondWord) == 0){
-                    duplicates += 1;
-                }
-                firstPos += 1;
-                secondPos += 1;
+    public int countDuplicates() {
+        Map<String, Integer> repetitionMap = new HashMap<>();
+        for (String str : this.list) {
+
+            if (repetitionMap.containsKey(str)) {
+                repetitionMap.put(str, repetitionMap.get(str) + 1);
+            } else {
+                repetitionMap.put(str, 1);
             }
         }
 
+        int duplicates = 0;
+        for (int repeatCount : repetitionMap.values()) {
+            if (repeatCount > 1) {
+                duplicates++;
+            }
+        }
         return duplicates;
     }
+
+
+    /*{
+        int duplicates = 0;
+        boolean foundDuplicate = false;
+        for (int i = 0; i < list.length - 1; i += 1){
+            for (int y = i + 1; y < list.length -1; y += 1){
+                int firstPos = i;
+                int secondPos = y;
+                String firstWord = list[firstPos];
+                String secondWord = list[secondPos];
+                if (firstWord.compareTo(secondWord) == 0){
+                   foundDuplicate = true;
+                }
+            }
+            if (foundDuplicate) {
+                duplicates += 1;
+            }
+        }*/
 
     /**
      * Moves any word that starts with x, y, or z to the front of the arraylist, but
      * otherwise preserves the order
      */
-    public void xyzToFront()
-    {
+    public void xyzToFront() {
         int insertAt = 0;
+        String[] tmpArray = Arrays.copyOf(list, list.length);
+        for (int i = 1; i < list.length; i += 1) {
+            String word = tmpArray[i];
+            String firstLetter = word.substring(0, 1).toLowerCase();
 
+            if (firstLetter.equals("x") || firstLetter.equals("y") || firstLetter.equals("z")) {
+                for (int y = i; y > insertAt; y -= 1){
+                    int posMoveFrom = y-1;
+                    int posMoveTo = y;
+                    tmpArray[posMoveTo]= tmpArray[posMoveFrom];
+                }
+                tmpArray[insertAt] = word;
+                insertAt += 1;
+            }
+        }
+        this.list = tmpArray;
     }
 
     /**
@@ -88,6 +139,11 @@ public class ArrayMethods
      */
     public String toString()
     {
-        return list.toString();
+        String arrayString = "[";
+        for (String s: this.list) {
+            arrayString = arrayString + s + ", ";
+        }
+        arrayString = arrayString.substring(0, arrayString.length()- 2) + "]";
+        return arrayString;
     }
 }
