@@ -14,7 +14,7 @@ public class ArrayUtil
   public String inReverse(int[] values)
   {
       String message ="";
-      for ( __________________ ) //finish the loop header
+      //for ( __________________ ) //finish the loop header
       {
           // TODO: concatenate the elements to message in reverse order
       }

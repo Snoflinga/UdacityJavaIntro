@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/hw7_short_16_reverse_array" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/hw7_short_17_count_matches" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/hw7_short_20_fill_array" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
