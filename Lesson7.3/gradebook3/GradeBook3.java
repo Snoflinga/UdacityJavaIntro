@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class GradeBook
+public class GradeBook3
 {
     private ArrayList<String> students;
     private int numStudents;
@@ -14,7 +14,7 @@ public class GradeBook
     private int numTopics;
     private double[][] grades;
 
-    public GradeBook(String file)
+    public GradeBook3(String file)
     {
         students = new ArrayList<String>();
         topics = new ArrayList<String>();
@@ -67,6 +67,16 @@ public class GradeBook
     public double[] totalsForAllTopics()
     {
         // TODO: Implement the totalsForAllTopics method.
+        double[]total = new double[numTopics];
+        double sumTopic = 0;
+        for ( int topic = 0; topic<numTopics; topic += 1){
+            for (int student = 0; student < numStudents; student +=1){
+                sumTopic = sumTopic + grades[student][topic];
+            }
+            total[topic] = sumTopic;
+            sumTopic = 0;
+        }
+    return total;
     }
 
     // This method reads the scores from the file. Don't look inside.

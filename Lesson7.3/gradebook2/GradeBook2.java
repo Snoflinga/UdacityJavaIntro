@@ -1,4 +1,4 @@
-// BlueJ project: lesson7/gradebook1
+// BlueJ project: lesson7/gradebook2
 
 import java.io.FileReader;
 import java.io.FileNotFoundException;
@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class GradeBook
+public class GradeBook2
 {
     private ArrayList<String> students;
     private int numStudents;
@@ -14,7 +14,7 @@ public class GradeBook
     private int numTopics;
     private double[][] grades;
 
-    public GradeBook(String file)
+    public GradeBook2(String file)
     {
         students = new ArrayList<String>();
         topics = new ArrayList<String>();
@@ -29,8 +29,33 @@ public class GradeBook
      */
     public double totalForStudent(int studentIndex)
     {
-        // TODO: Return the total of all the scores for the student in row studentIndex
-        return 0;
+        if (studentIndex < 0 || studentIndex >= numStudents)
+        {
+            return -1;
+        }
+        double sum = 0;
+        for (int j=0; j < numTopics; j++)
+        {
+            sum = sum + grades[studentIndex][j];
+        }
+        return sum;
+    }
+
+    /**
+     * Calculates the totals for all the students and returns the results
+     * in a completely filled array.
+     * @return a filled array of the total for each student.
+     */
+    public double[] totalsForAllStudents()
+    {
+        double [] totals = new double[students.size()];
+        int counter = 0;
+        double sum = 0;
+        for (int i = 0; i < students.size(); i += 1){
+            totals[i] = totalForStudent(i);
+        }
+
+        return totals;
     }
 
     // This method reads the scores from the file. Don't look inside.

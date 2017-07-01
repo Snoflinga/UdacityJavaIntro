@@ -1,10 +1,8 @@
-import java.util.Arrays;
-
-public class GradeBookTester
+public class GradeBookTester1
 {
     public static void main(String[] args)
     {
-        GradeBook book = new GradeBook("grades.txt");
+        GradeBook1 book = new GradeBook1("grades.txt");
         System.out.println(book.totalForStudent(0));
         System.out.println("Expected: 37.0");
         System.out.println(book.totalForStudent(21));
