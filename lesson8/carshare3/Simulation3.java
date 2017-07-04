@@ -54,7 +54,13 @@ public class Simulation3
     */
     public void loadPassengers()
     {
-        
+        for (Person3 person : people) {
+            for (Car3 car: cars){
+                if (car.tryToAdd(person)){
+                    break;
+                }
+            }
+        }
         //TODO Complete this method
     }
 
