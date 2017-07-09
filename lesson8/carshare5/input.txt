@@ -1,4 +1,4 @@
-4 Jane 3
+4 Jane 4
 2 Fred 2
 0 Ann 3
 0 Sue 1

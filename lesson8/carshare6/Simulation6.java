@@ -60,7 +60,7 @@ public class Simulation6
             for (int i = 0; !added && i < cars.size(); i++)
             {
                 added = cars.get(i).tryToAdd(p);
-                // TODO: Add print statement here
+                System.out.println(cars.get(i).getDriverName() + " picks up " + p.getName());// TODO: Add print statement here
             }
         }
     }

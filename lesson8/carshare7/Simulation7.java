@@ -80,14 +80,16 @@ public class Simulation7
             while (i < cars.size())
             {
                 Car7 c = cars.get(i);
-                c.drive();
+               // ArrayList<Person7> droppedPersons = c.drive();
                 // TODO: Add print statement here
+                for (Person7 p : c.drive()) {
+                System.out.println(cars.get(i).getDriverName()
+                        + " drops off " + p.getName());
+                }
                 if (c.hasArrived())
                 {
                     cars.remove(i);
-                }
-                else
-                {
+                } else {
                     i++;
                 }
             }

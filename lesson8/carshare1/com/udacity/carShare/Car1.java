@@ -1,6 +1,8 @@
-// BlueJ project: lesson8/carshare1
+package com.udacity.carShare;// BlueJ project: lesson8/carshare1
 // To-do:
 // implement tryToAdd()
+import com.udacity.Person1;
+
 import java.util.ArrayList;
 
 public class Car1

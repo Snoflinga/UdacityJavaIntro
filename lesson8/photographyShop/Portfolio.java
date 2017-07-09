@@ -5,5 +5,5 @@
 
 public class Portfolio
 {
-
+// finished pictures: Picture picture = new Picture("photographyShop/" + photographer.displayAssignment());
 }

@@ -5,15 +5,20 @@
 // in the correct order, and printed out with photographers
 // signatures below them in the order in which they are completed.
 import java.util.ArrayList;
+import java.util.List;
 
 public class Manager
 {
-    // YOUR CODE HERE
+    private List<Photographer> photographerList;
+    private List<Assignment> assignmentList;
+    private List<FinishedPhoto> portfolio;
     // What does the manager need to remember to do his/her job?
 
     public Manager()
     {
-        // YOUR CODE HERE
+        photographerList = new ArrayList<>();
+        assignmentList = new ArrayList<>();
+        portfolio = new ArrayList<>();
         // How do you need to initialize the instance variables?
     }
 
@@ -22,7 +27,8 @@ public class Manager
      */
     public void hire(String photographer)
     {
-        // YOUR CODE HERE
+        Photographer hiredPhotographer = new Photographer(photographer);
+        photographerList.add(hiredPhotographer);
         // How will you keep track of the photographers you have hired?
     }
 
@@ -35,7 +41,30 @@ public class Manager
      */
     public void giveOutAssignments()
     {
-        // YOUR CODE HERE
+        for (Photographer photographer : photographerList) {
+            if (assignmentList.size() == 0) {
+                break;
+            } else {
+                Assignment highestPriority = assignmentList.get(0);
+                int counter = 0;
+                int highestPos = 0;
+                for (Assignment assignment : assignmentList) {
+                    if (assignment.getPrio() > highestPriority.getPrio()) {
+                        highestPriority = assignment;
+                        highestPos = counter;
+                    }
+                    counter += 1;
+                }
+                if (photographer.tryAddAssignment(highestPriority)) {
+                    FinishedPhoto finishedPhoto = new FinishedPhoto(photographer.getName(), photographer.displayAssignment());
+                    portfolio.add(finishedPhoto);
+                    assignmentList.remove(highestPos);
+                } else { // TODO delete this if/else
+                    System.out.println("Photographer already has an assignment");
+                }
+            }
+        }
+
         // Where did you store the photographers and unfinished assignments?
         // Assign the highest priority assignment first to the
         // photographer who was hired first, then the next highest priority
@@ -49,7 +78,8 @@ public class Manager
      */
     public void newAssignment(int priority, String description)
     {
-        // YOUR CODE HERE
+        Assignment assignment = new Assignment(priority, description);
+        assignmentList.add(assignment);
         // How will you keep track of the unfinished assignments?
     }
 
@@ -59,7 +89,16 @@ public class Manager
      */
     public void checkPortfolio()
     {
-        // YOUR CODE HERE
+        int translate = 0;
+        for (FinishedPhoto photo : portfolio) {
+
+            Picture picture = photo.getPicture();
+            picture.translate(translate,0);
+            picture.draw();
+            Text text = new Text(translate, picture.getMaxY(), photo.getAuthor());
+            text.draw();
+            translate = picture.getMaxX();
+        }
         // You may need to display all the finished work when
         // this method is called, or you may have been displaying
         // the photos as you went. If you have already displayed

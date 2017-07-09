@@ -9,9 +9,9 @@ public class CarShareApp5
 {
     public static void main(String[] args) throws IOException
     {
-        /*Simulation sim = new Simulation();
-        sim.read(new Scanner(new File("input.txt")));
+        Simulation5 sim = new Simulation5();
+        sim.read(new Scanner(new File("carshare5/input.txt")));
         sim.loadPassengers();
-        sim.driveCars();*/
+        sim.driveCars();
     }
 }

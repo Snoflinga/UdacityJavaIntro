@@ -23,7 +23,7 @@ public class Simulation
         Manager manager = new Manager();
         try
         {
-            Scanner in = new Scanner(new File("story.txt"));
+            Scanner in = new Scanner(new File("photographyShop/story.txt"));
 
             // Read lines and hire, giveOutAssignments, or create a newAssignment
             // depending on what the line says. 

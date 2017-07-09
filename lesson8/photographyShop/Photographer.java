@@ -18,12 +18,41 @@ import java.io.FileNotFoundException;
 public class Photographer
 {
     private Map<String, String> photos;
+    private String name;
+    private Assignment assignment;
 
-    public Photographer()
+    public Photographer(String name)
     {
+        this.name = name;
+        this.assignment = null;
         photos = new HashMap(); // An important line. Must go in the constructor.
         readPhotos(); // A very important line. this must go in the Photographer
         // constructor so that the photographer will be able to take Pictures.
+    }
+
+    /**
+     * Tries to add an assignment to the photographer
+     * @param assignment
+     * @return true if photographer don't have an assignment, otherwise returns false.
+     */
+    public boolean tryAddAssignment(Assignment assignment){
+        if (this.assignment == null){
+            this.assignment = assignment;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String displayAssignment(){
+        String string = takePicture(assignment.getTextdesc());
+        assignment = null;
+        return string;
+
+    }
+
+    public String getName(){
+        return name;
     }
 
     /**
@@ -51,7 +80,7 @@ public class Photographer
         Pattern photoPattern = Pattern.compile("([a-zA-Z0-9\\.]+) (.*)");
         try
         {
-            Scanner in = new Scanner(new File("photos.txt"));
+            Scanner in = new Scanner(new File("photographyShop/photos.txt"));
 
             while (in.hasNextLine())
             {

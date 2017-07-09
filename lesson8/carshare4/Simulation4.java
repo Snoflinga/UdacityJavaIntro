@@ -70,7 +70,11 @@ public class Simulation4
     */
     public void driveCars()
     {
-        // Complete this method
+        for (Car4 car : cars) {
+            while (!car.hasArrived()){
+                car.drive();
+            }
+        }// Complete this method
     }
 
     public String toString()
