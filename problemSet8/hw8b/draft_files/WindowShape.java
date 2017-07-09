@@ -61,9 +61,22 @@ public class WindowShape
 
     // other methods for dealing with windows ...
 
-    // TODO: Write an instance method to get the area of the shape
+    public double area(){
+        double rectangleArea = this.h * this.w;
+        double radius = this.w/2;
+        double halfCircleArea = (radius*radius * Math.PI) / 2;
+        double totalArea = halfCircleArea + rectangleArea;
+        return totalArea;
+    }// TODO: Write an instance method to get the area of the shape
 
     // TODO: Write a static method that takes the width and height of the rectangle
     // as parameters and returns the area of a rectangle wiht those dimensions and with a
     // semi-circle on top.
+    public static double area (double width, double height){
+        double rectangleArea = height * width;
+        double radius = width/2;
+        double halfCircleArea = (radius*radius * Math.PI) / 2;
+        double totalArea = halfCircleArea + rectangleArea;
+        return totalArea;
+    }
 }
