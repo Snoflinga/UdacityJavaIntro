@@ -1,6 +1,6 @@
 //In this exercise we are going to manipulate images with the Picture class. We are
 //studying 2D arrays so we will work with the 2D int array that is returned by
-//Picture's getGraylevels method. This method is dicussed at the end of lesson 7.3.
+//Picture's getGraylevels method. This method is discussed at the end of lesson 7.3.
 //Each element of the array coresponds to a pixel in the image. The color has been
 //transformed from an RGB color to a gray scale value.
 
@@ -50,11 +50,24 @@ public class PictureUtil
      */
     public static Picture grayAndFlipLeftToRight( Picture pic)
     {
-        // TODO get a gray scale version
-        // TODO flip it left to right
-        // TODO create and return the new Picture
+        int[][] grayPicArray = pic.getGrayLevels();// TODO get a gray scale version
+        int backwards = grayPicArray[0].length -1;
+        int halfway = (grayPicArray[0].length -1) / 2;
+        for (int row = 0; row < grayPicArray.length -1 ; row++) {
+            for (int column = 0; column < halfway ; column++) {
+                int temp = grayPicArray[row][column];
+                grayPicArray[row][column] = grayPicArray[row][backwards];
+                grayPicArray[row][backwards] = temp;
+                backwards -= 1;
+            }
+            backwards = grayPicArray[0].length -1;
+        }// TODO flip it left to right
 
+        Picture picture = new Picture(grayPicArray);
+        // TODO create and return the new Picture
+        return picture;
     }
+
 
     /**
      * Gets a version of the given Picture in gray scale and rotated 90 degrees clockwise
@@ -63,10 +76,21 @@ public class PictureUtil
      */
     public static Picture grayAndRotate90( Picture pic)
     {
-        // TODO get a gray scale version
-        // TODO make a new array where the first row of the original becomes the last
-        // column of the new array
-        return new Picture(); //just so draft will compile. You will change it in the final
+        int[][] grayPicArray = pic.getGrayLevels();// TODO get a gray scale version
+        int numRows = grayPicArray[0].length;
+        int numColumns = grayPicArray.length;
+        int [][] newPicArray = new int[numRows][numColumns];
+        for (int rowOldPic = 0; rowOldPic < grayPicArray.length -1 ; rowOldPic++) {
+            for (int columnOldPic = 0; columnOldPic < grayPicArray[0].length; columnOldPic++) {
+                int temp = grayPicArray[rowOldPic][columnOldPic];
+                int rowNewPic = columnOldPic;
+                int columnNewPic = rowOldPic;
+                newPicArray[rowNewPic][columnNewPic] = temp;
+            }
+        }
+        Picture picture = new Picture(newPicArray);
+        // TODO make a new array where the first row of the original becomes the last column of the new array
+        return picture; //just so draft will compile. You will change it in the final
     }
 
 }

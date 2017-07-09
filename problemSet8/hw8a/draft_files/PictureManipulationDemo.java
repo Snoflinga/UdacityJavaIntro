@@ -4,7 +4,7 @@ public class PictureManipulationDemo
     public static void main(String[] args)
     {
         final int SPACER = 10;
-        Picture pic = new Picture("renoir1.jpg");
+        Picture pic = new Picture("hw8a/draft_files/renoir1.jpg");
         pic.draw();
         Picture flipped = PictureUtil.grayAndFlipLeftToRight(pic);
         flipped.translate(pic.getWidth() + SPACER, 0);
@@ -13,6 +13,4 @@ public class PictureManipulationDemo
         rotated.translate(2 * pic.getWidth() + 2 * SPACER, 0);
         rotated.draw();
     }
-
-
 }
