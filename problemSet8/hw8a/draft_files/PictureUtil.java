@@ -52,8 +52,8 @@ public class PictureUtil
     {
         int[][] grayPicArray = pic.getGrayLevels();// TODO get a gray scale version
         int backwards = grayPicArray[0].length -1;
-        int halfway = (grayPicArray[0].length -1) / 2;
-        for (int row = 0; row < grayPicArray.length -1 ; row++) {
+        int halfway = (grayPicArray[0].length) / 2;
+        for (int row = 0; row < grayPicArray.length ; row++) {
             for (int column = 0; column < halfway ; column++) {
                 int temp = grayPicArray[row][column];
                 grayPicArray[row][column] = grayPicArray[row][backwards];
@@ -80,14 +80,24 @@ public class PictureUtil
         int numRows = grayPicArray[0].length;
         int numColumns = grayPicArray.length;
         int [][] newPicArray = new int[numRows][numColumns];
-        for (int rowOldPic = 0; rowOldPic < grayPicArray.length -1 ; rowOldPic++) {
-            for (int columnOldPic = 0; columnOldPic < grayPicArray[0].length; columnOldPic++) {
-                int temp = grayPicArray[rowOldPic][columnOldPic];
-                int rowNewPic = columnOldPic;
-                int columnNewPic = rowOldPic;
-                newPicArray[rowNewPic][columnNewPic] = temp;
-            }
+        int rowOldPic = 0;
+
+        for (int columnNewPic = numColumns - 1; columnNewPic >= 0; columnNewPic--) {
+        // Iterating and transferring old pictures columns to new pictures rows.
+        for (int rowNewPic = 0; rowNewPic < numRows ; rowNewPic++) {
+            int picValue = grayPicArray[rowOldPic][rowNewPic];
+            newPicArray[rowNewPic][columnNewPic] = picValue;
         }
+        rowOldPic += 1;
+        }
+
+        /*newPicArray [0][3] = grayPicArray[0][0];
+        newPicArray [1][3] = grayPicArray [0][1];
+        newPicArray [2][3] = grayPicArray [0][2];
+        newPicArray [0][2] = grayPicArray[1][0];
+        newPicArray [1][2] = grayPicArray [1][1];
+        newPicArray [2][2] = grayPicArray [1][2];*/
+
         Picture picture = new Picture(newPicArray);
         // TODO make a new array where the first row of the original becomes the last column of the new array
         return picture; //just so draft will compile. You will change it in the final

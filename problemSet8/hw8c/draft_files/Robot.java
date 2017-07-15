@@ -19,7 +19,7 @@
 
 // getDistanceFromStart() returns the distance the robot is from the starting point.
 
-// This problem is an example of describing the design pattern, position of an objet.
+// This problem is an example of describing the design pattern, position of an object.
 
 //You would expect that if the robot is moving randomly that he would wind up very close to where he started,
 //but that is not true. It would take more of a mathematician than I am to explain why. But it is interesting.
@@ -40,7 +40,9 @@ import java.util.Random;
 
 public class Robot
 {
-    // TODO: define other instance variables
+    private int x;
+    private int y;
+    private double distanceFromStart;
 
     private Random generator;
 
@@ -51,17 +53,63 @@ public class Robot
      */
     public Robot(int theX, int theY)
     {
-        // TODO: Complete the constructor
+        this.x = theX;
+        this.y = theY;
+        this.distanceFromStart = 0.0;
 
         generator = new Random();
         generator.setSeed(12345);  //do not change this statement
     }
 
-    // TODO Supply getLocation
+    /**
+     * Get location for the robot currently position.
+     * @return x and y coordinates
+     */
+// TODO Supply getLocation
     public Point getLocation()
     {
-        return null;
+        Point point = new Point(this.x, this.y);
+        return point;
     }
-    // TODO: Supply the methods of the Robot class
+
+    /**
+     * Robot moves by one unit in a random direction.
+     */
+    public void makeRandomMove(){
+        Point startPos = getLocation();
+        int move = generator.nextInt(4);
+        switch (move){
+            case 0:{
+                this.y += 1;
+
+                break;
+            }
+            case 1:{
+                this.y -= 1;
+                break;
+            }
+            case 2:{
+                this.x -= 1;
+                break;
+            }
+            case 3:{
+                this.x += 1;
+                break;
+            }
+            default: {
+                System.out.println("Error: robot hasn't move.");
+                break;
+            }
+        }
+        Point goalPos = getLocation();
+        distanceFromStart += Math.sqrt((((goalPos.getX() - startPos.getX()) * (goalPos.getX() - startPos.getX()))
+                +((goalPos.getY() - startPos.getY())*(goalPos.getY() - startPos.getY()))));
+    }
+
+    public double getDistanceFromStart(){
+        return distanceFromStart;
+    }
+
+
 
 }

@@ -1,10 +1,12 @@
+/*
 import java.awt.Point;
 public class RandomWalkTester
 {
     public static void main(String[] args)
     {   
 
-        Robot robby = new Robot(100,100);
+        */
+/*Robot robby = new Robot(100,100);
         move(robby, 1000000);
 
         System.out.printf("%s%.2f\n", "Distance: ",robby.getDistanceFromStart());
@@ -34,3 +36,4 @@ public class RandomWalkTester
 
     }
 }
+*/
