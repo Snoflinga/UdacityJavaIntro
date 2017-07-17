@@ -43,6 +43,7 @@ public class Robot
     private int x;
     private int y;
     private double distanceFromStart;
+    private Point startPos;
 
     private Random generator;
 
@@ -56,6 +57,7 @@ public class Robot
         this.x = theX;
         this.y = theY;
         this.distanceFromStart = 0.0;
+        this.startPos = new Point(theX, theY);
 
         generator = new Random();
         generator.setSeed(12345);  //do not change this statement
@@ -76,24 +78,22 @@ public class Robot
      * Robot moves by one unit in a random direction.
      */
     public void makeRandomMove(){
-        Point startPos = getLocation();
-        int move = generator.nextInt(4);
+        int move = generator.nextInt(4); // To choose the random direction, generate an int from 0 to 3.
         switch (move){
-            case 0:{
-                this.y += 1;
-
-                break;
-            }
-            case 1:{
+            case 0:{ //  0 is toward the top of the window (north)
                 this.y -= 1;
                 break;
             }
-            case 2:{
-                this.x -= 1;
+            case 1:{ //  1 is towards the bottom of the window (south)
+                this.y += 1;
                 break;
             }
-            case 3:{
+            case 2:{ //  2 is towards the right side of the window (east)
                 this.x += 1;
+                break;
+            }
+            case 3:{ //  3 is towards the left side of the window (west)
+                this.x -= 1;
                 break;
             }
             default: {
@@ -101,12 +101,12 @@ public class Robot
                 break;
             }
         }
-        Point goalPos = getLocation();
-        distanceFromStart += Math.sqrt((((goalPos.getX() - startPos.getX()) * (goalPos.getX() - startPos.getX()))
-                +((goalPos.getY() - startPos.getY())*(goalPos.getY() - startPos.getY()))));
     }
 
     public double getDistanceFromStart(){
+        Point goalPos = getLocation();
+        distanceFromStart += Math.sqrt((((goalPos.getX() - startPos.getX()) * (goalPos.getX() - startPos.getX()))
+                +((goalPos.getY() - startPos.getY())*(goalPos.getY() - startPos.getY()))));
         return distanceFromStart;
     }
 
