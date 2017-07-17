@@ -29,6 +29,7 @@ public class Scene
         for (int i = 1; i <= 10; i++)
         {
             car1.move(1);
+            dog1.move(1);
             Canvas.snapshot();
         }
     }

@@ -4,7 +4,7 @@
    They move one pixel downwards every second.
 */
 
-public class Dog implements Drawable
+public class Dog implements Drawable, Moveable
 {
     private Picture pic;
     private Text name;
@@ -17,9 +17,17 @@ public class Dog implements Drawable
                         file.substring(0, file.indexOf(".")));
     }
 
+
     public void draw()
     {
         pic.draw();
         name.draw();
+    }
+
+    @Override
+    public void move(int seconds) {
+        final int SPEED = 1; // pixels per second
+        //pic.translate(seconds * SPEED, 0);
+        pic.translate(0, seconds * SPEED);
     }
 }
