@@ -2,7 +2,7 @@
 // TODO: Make this ball drawable.
 // To draw it, simply fill the shape.
 
-public class Ball
+public class Ball implements Drawable
 {
     private Ellipse shape;
 
@@ -19,4 +19,9 @@ public class Ball
         shape.setColor(color);
     }
 
+    @Override
+    public void draw() {
+        shape.fill();
+        shape.draw();
+    }
 }

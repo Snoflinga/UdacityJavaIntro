@@ -17,7 +17,7 @@ public class Scene
         elements.add(new Dog(100, 400, "Rex.jpg"));
         elements.add(new Dog(200, 400, "Lucky.jpg"));
 
-        // TODO: Add a red ball at (400, 400)
+        elements.add(new Ball(400,400, Color.RED));// TODO: Add a red ball at (400, 400)
 
         for (Drawable d : elements)
         {
