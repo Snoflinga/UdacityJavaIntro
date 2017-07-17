@@ -14,6 +14,10 @@ public class Scene
         dogs.add(new Dog(100, 400, "Rex.jpg"));
         dogs.add(new Dog(200, 400, "Lucky.jpg"));
 
+        ArrayList<Car> cars = new ArrayList<>();
+        cars.add(new Car(100, 300));
+        cars.add(new Car(250, 300));
+        cars.add(new Car(250, 350));
         // Add cars at (100, 300), (250, 300), (250, 350)
 
         for (House h : houses)
@@ -23,6 +27,9 @@ public class Scene
         for (Dog d : dogs)
         {
             d.draw();
+        }
+        for (Car c : cars) {
+            c.draw();
         }
     }
 }
