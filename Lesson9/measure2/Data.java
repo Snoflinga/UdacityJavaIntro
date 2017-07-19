@@ -30,6 +30,18 @@ public class Data
     */
     public static double average(Car[] objects)
     {
-        // TODO: Compute the average fuel efficiency
+        double sum = 0;
+        for (Car car : objects)
+        {
+            sum = sum + car.getFuelEfficiency();
+        }
+        if (objects.length > 0)
+        {
+            return sum / objects.length;
+        }
+        else
+        {
+            return 0;
+        }// TODO: Compute the average fuel efficiency
     }
 }

@@ -10,10 +10,14 @@ public class Data
     {
         // TODO: Compute the average area
         double sum = 0;
+        double numOfCountries = 0;
+        double average = 0;
         for (Country obj : objects)
         {
-            ...
+            sum += obj.getArea();
+            numOfCountries += 1;
         }
-        return ...
+        average = sum/numOfCountries;
+        return average;
     }
 }

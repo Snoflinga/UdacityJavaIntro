@@ -10,9 +10,9 @@ public class Data
     {
         // TODO: Compute the average measure
         double sum = 0;
-        for (... obj : objects)
+        for (Measurable obj : objects)
         {
-            ...
+            sum += obj.getMeasure();
         }
         if (objects.length > 0)
         {

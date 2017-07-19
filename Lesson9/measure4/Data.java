@@ -35,10 +35,12 @@ public class Data
             return null;
         }
         Measurable largestSoFar = objects[0];
-        for (int i = 1; i < objects.length; i++)
-        {
-            ...
+        for (Measurable obj : objects) {
+            if (obj.getMeasure() > largestSoFar.getMeasure()){
+                largestSoFar = obj;
+            }
         }
+
         return largestSoFar;
     }
 }
