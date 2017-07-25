@@ -14,12 +14,17 @@ public class QuestionDemo
         first.setText("Who was the inventor of Java?");
         first.setAnswer("James Gosling");
 
+        Question second = new Question();
+        second.setText("Who was the founder of Udacity?");
+        second.setAnswer("Sebastian Thrun");
+
         // Make another question second that asks
         // "Who was the founder of Udacity?".
         // The answer is "Sebastian Thrun"
 
         int score = 0;
         score = score + presentQuestion(first, in);
+        score = score + presentQuestion(second, in);
         // Present the second question
         System.out.println("Your score: " + score);
     }
@@ -32,9 +37,16 @@ public class QuestionDemo
     */
     public static int presentQuestion(Question q, Scanner in)
     {
-        // Display the first question
+        q.display();// Display the first question
         System.out.println("Your answer:");
         String response = in.nextLine();
+        if (q.checkAnswer(response)){
+            System.out.println("true");
+            return 1;
+        } else {
+            System.out.println("false");
+            return  0;
+        }
         // Check whether the response was correct
         // If so, print "true" and return 1
         // Otherwise, print "false" and return 0

@@ -35,6 +35,7 @@ public class ChoiceQuestion extends Question
     public void display()
     {
         // TODO: Display the question text
+        super.display();
 
         // Display the answer choices
         for (int i = 0; i < choices.size(); i++)

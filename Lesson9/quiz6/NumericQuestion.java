@@ -4,10 +4,11 @@ import java.util.ArrayList;
 /**
    A question with a numeric answer.
 */
-public class NumericQuestion
-// TODO: Specify superclass
+public class NumericQuestion extends Question
+// Specify superclass
 {
     private double tolerance;
+    private double answer;
     // TODO: Provide any needed instance variables
 
     /**
@@ -23,11 +24,18 @@ public class NumericQuestion
 
     public void setAnswer(double number)
     {
-        // TODO: Implement this method
+        super.setAnswer("" + number);
+        this.answer = number;//  Implement this method
     }
 
     public boolean checkAnswer(String response)
     {
+        double answerResponse = Double.parseDouble(response);
+        if (answerResponse - tolerance <= answer && answer <= answerResponse + tolerance ){
+            return true;
+        } else {
+            return false;
+        }
         // TODO: Implement this method
         // Hint: Double.parseDouble converts a string
         // containing digits and a decimal point
