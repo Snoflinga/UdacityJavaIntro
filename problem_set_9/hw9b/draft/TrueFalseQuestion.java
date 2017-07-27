@@ -16,12 +16,49 @@
 //
 // You will not need to add instance variables
 //
-//For the draft, make the changes necessary to prepend the question submitted bu the user with
+//For the draft, make the changes necessary to prepend the question submitted by the user with
 //    Answer True or False:
 //
-public class TrueFalseQuestion
+public class TrueFalseQuestion extends Question
 {
-   // TODO: for the draft, override the appropriate method(s) to present the question as specified
-   // TODO: for the final, override the necessay  method(s) all valid answers as specified
+    /**
+     Displays this question.
+     */
+    @Override
+    public void display()
+    { // TODO: for the draft, override the appropriate method(s) to present the question as specified
+        System.out.print("Answer True or False: ");
+        super.display();
+    }
+
+    /**
+     Sets the answer for this question.
+     @param correctResponse the answer
+     */
+    @Override
+    public void setAnswer(String correctResponse)
+    {
+        String answer = correctResponse.toLowerCase();
+        super.setAnswer(answer);
+    }
+
+    /**
+     Checks a given response for correctness.
+     @param response the response to check
+     @return true if the response was correct, false otherwise
+     */
+    @Override
+    public boolean checkAnswer(String response)
+    {
+        String respondedAnswer = response.toLowerCase();
+        if (respondedAnswer.equals("t") || respondedAnswer.equals("true")){
+            return super.checkAnswer("true");
+        }else if (respondedAnswer.equals("f") || respondedAnswer.equals("false")){
+            return super.checkAnswer("false");
+        } else {
+            return super.checkAnswer(response);
+        }
+    }
+   // TODO: for the final, override the necessary  method(s) all valid answers as specified
 
 }

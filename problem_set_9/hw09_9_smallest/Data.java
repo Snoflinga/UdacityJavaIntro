@@ -53,5 +53,18 @@ public class Data
        @param objects an array of Measurable objects
        @return the object with the smallest measure
     */
+    public static Measurable smallest(Measurable[] objects){
+        if (objects.length == 0)
+        {
+            return null;
+        }
+        Measurable smallest = objects[0];
+        for (Measurable o : objects) {
+            if (o.getMeasure() < smallest.getMeasure()) {
+                smallest = o;
+            }
+        }
+        return smallest;
+    }
      // TODO: implement the smallest method described in the javadoc
 }

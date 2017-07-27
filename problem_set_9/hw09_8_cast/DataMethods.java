@@ -5,9 +5,20 @@ public class DataMethods
 {
     /**
      * Gets the length of the object if it is a string
-     * @param c the object wehose length we want
+     * @param object the object we hose length we want
      * @return the length if the object is a string otherwise -1
      */
 
+    public int getLength(Comparable object){
+
+        try {
+            String s = (String) object;
+            return s.length();
+
+        } catch (ClassCastException e){
+        return - 1;
+        }
+
+    }
       // TODO: implement the method described by this javadoc
 }

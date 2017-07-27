@@ -4,7 +4,7 @@
 // a Manager has a bonus. So we add that instance variable
 //
 // In the previous problem you added the code to complete the constructor
-// Now override the getSalary method to return the total of the salsry and bonus
+// Now override the getSalary method to return the total of the salary and bonus
 //
 public class Manager extends Employee
 {
@@ -18,6 +18,8 @@ public class Manager extends Employee
      */
     public Manager(String name, double salary, double theBonus)
     {
+        super(name, salary);
+        this.bonus = theBonus;
         // TODO: complete the constructor
 
     }
@@ -33,7 +35,8 @@ public class Manager extends Employee
 
     public double getSalary()
     {
-        // TODO: finish the method implementation
+        double salary = super.getSalary() + bonus; // TODO: finish the method implementation
+        return  salary;
 
     }
 }

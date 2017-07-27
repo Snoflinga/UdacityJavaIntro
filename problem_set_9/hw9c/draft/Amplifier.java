@@ -22,7 +22,7 @@
 //
 // For the draft, write the InvertingAmplifier which will extend Amplifier.
 //
-//You do not need to change thiclass
+//You do not need to change this class
 public class Amplifier
 {
     private int r1;
@@ -33,7 +33,7 @@ public class Amplifier
      * @param resistance1 the first resistance
      * @param resistance2 the second resistance
      */
-    public  Amplifier( int resistance1, int resistance2)
+    public Amplifier( int resistance1, int resistance2)
     {
         r1 = resistance1;
         r2 = resistance2;

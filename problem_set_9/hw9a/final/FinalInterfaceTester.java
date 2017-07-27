@@ -1,5 +1,5 @@
 
-public class InterfaceTester
+public class FinalInterfaceTester
 {
    public static void main(String[] args)
    {

@@ -12,7 +12,15 @@ public class Cube implements GeometricSolid
         side = s;
     }
 
-    // other methods
+    @Override
+    public double getVolume() {
+        double volume = Math.pow(this.side, 3);
+        return volume;
+    }
 
-
+    @Override
+    public double getSurfaceArea() {
+        double area = 6 * Math.pow(this.side, 2);
+        return area;
+    }
 }

@@ -8,18 +8,26 @@ public class QuestionDemo
     public static void main(String[] args)
     {
         Scanner in = new Scanner(System.in);
+        int score = 0;
 
         Question first = new TrueFalseQuestion();
-        first.setText("Albert Einstein was the inventer of Java.");
+        first.setText("Albert Einstein was the inventor of Java.");
         first.setAnswer("false");
         
         Question second = new TrueFalseQuestion();
         second.setText("True or False: The original name for Java was Oak");
         second.setAnswer("TRUE");
-        
-        presentQuestion(first, in);
-        presentQuestion(second, in);
 
+        Question third = new TrueFalseQuestion();
+        third.setText("A question the answer is true, I answer fal");
+        third.setAnswer("f");
+        
+        score += presentQuestion(first, in);
+        System.out.println("Score: " + score);
+        score += presentQuestion(second, in);
+        System.out.println("Score: " + score);
+        score += presentQuestion(third, in);
+        System.out.println("Score: " + score);
     }
     /**
        Presents a question to the user and obtains a response.
